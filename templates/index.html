@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <title>Index Page</title>
+    <meta charset="UTF-8">
+    <title>Superadmin dashboard</title>
+    <meta name="description" content="Thanks for purchasing Huge. If you need any support, please contact with us.">
+    <meta name="author" content="lucidtemplate">
+    <meta name="copyright" content="lucidtemplate">
+    <link rel="shortcut icon" type="image/png" href="/static/img/favicon.ico">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/static/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/static/css/tree-viewer.css">
+    <link rel="stylesheet" href="/static/css/style.css">
+
+
+
+</head>
+<body>
+
+    <div class="wrapper">
+        <div class="left-side">
+            <div style="margin-bottom:25px;text-align:center;">
+                <h3 style="color:white; margin-top:20px;text-align:center;">Welcome Superadmin</h3>
+            </div>
+            <div class="left-content">
+                <ul role="tablist">
+                    <li role="presentation"><a href="{% url 'indexpagescrape' %}" ><span><i class="fa fa-support"></i></span>Scrape Websites</a></li>
+                    <li role="presentation"><a href="{% url 'results' source='All' %}" ><span><i class="fa fa-support"></i></span>All Stories</a></li>
+                    <li role="presentation"><a href="{% url 'results' source='Top Stories' %}"><span><i class="fa fa-support"></i></span>Top Stories</a></li>
+
+                    <li role="presentation"><a href="{% url 'results' source='Money Control' %}" ><span><i class="fa fa-support"></i></span>Money Control</a></li>
+                    <li role="presentation"><a href="{% url 'results' source='Magic Bricks' %}" ><span><i class="fa fa-support"></i></span>Magic Bricks</a></li>
+					<li role="presentation"><a href="{% url 'results' source='Hindu' %}" ><span><i class="fa fa-support"></i></span>Hindu</a></li>
+
+                </ul>
+            </div>
+            <div class="copyright">
+                <p style="text-align:center;">Copyright &#169; 2020 </p>
+            </div>
+        </div>
+        <div style="background-color:light-blue;">
+        <div class="right-side" >
+
+            <div class="right-content">
+
+                <h2>{{source}}</h2>
+                <div class ="col-md-12 btn btn-primary">
+
+                {% for i in results %}
+                    {% with forloop.counter as counter%}
+                <div class = "col-md-4 " style="margin-top:5px;white-space: normal;vertical-align:middle;" >
+                    {{counter}}
+
+                <a style="color: #ffffff" href="{{i.url}}">{{i.title}}</a>
+                    </div>
+                {% if forloop.counter|divisibleby:3 %}
+
+                </div>
+                <div class="col-md-12 btn btn-primary" >
+
+
+
+                {% endif %}
+
+
+                {% endwith %}
+                {% endfor %}
+
+                </div>
+
+            </div>
+        </div>
+            </div>
+    </div>
+
+    <script src="/static/js/jquery-3.1.0.min.js"></script>
+    <script src="/static/js/bootstrap.min.js"></script>
+	<script src="/static/js/jstree.min.js"></script>
+    <script src="/static/js/jstree.active.js"></script>
+    <script src="/static/js/main.js"></script>
+</body>
+
+</html>
+</html>

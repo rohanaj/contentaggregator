@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <form method="post" action=" {% url 'scrapenews' %}">
+        <select name="source">
+                <option>All</option>
+            {% for i in listsources %}
+                <option>{{i}}</option>
+            {% endfor %}
+        </select>
+        <input type="submit" value="Submit" id="submit" >
+
+    </form>
+</body>
+</html>
